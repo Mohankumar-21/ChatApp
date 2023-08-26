@@ -3,11 +3,9 @@ import { addDoc, collection, onSnapshot, serverTimestamp, query, where, orderBy 
 import { auth, db } from '../firebase-config';
 import '../styles/Chat.css';
 
-
 export const Chat = (props) => {
-  const { room } = props;
-  const [newMessage, setNewMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+  const { room, setSelectedRoom, setMessages, messages } = props; // Add setMessages and messages props
+  const [newMessage, setNewMessage] = useState([]);
   const messagesRef = collection(db, 'messages');
 
   useEffect(() => {
@@ -24,7 +22,8 @@ export const Chat = (props) => {
       setMessages(newmes);
     });
     return () => unsubscribe();
-  }, [room, messagesRef]);
+    // eslint-disable-next-line
+  }, [room, setMessages]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,11 +38,22 @@ export const Chat = (props) => {
     setNewMessage('');
   };
 
+  const handleExitRoom = () => {
+    setSelectedRoom(null); // Clear the selected room
+    setMessages([]); // Clear the messages
+  };
+
   return (
     <div className="chat-app">
       <div className="header">
         <h1>Welcome to : {room.toUpperCase()}</h1>
       </div>
+      <button
+        className="exit-room-button"
+        onClick={handleExitRoom}
+      >
+        Exit Room
+      </button>
       <div className="messages">
         {messages.map((message) => (
           <div className="message" key={message.id}>
@@ -62,7 +72,6 @@ export const Chat = (props) => {
         <button type="submit" className="send-button">
           Send
         </button>
-  
       </form>
     </div>
   );

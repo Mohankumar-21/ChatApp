@@ -59,9 +59,11 @@
 /* Background image */
 .container {
   background-image: url('./img/background.jpg'); /* Adjust the path accordingly */
-  background-size: cover;
+  background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
+  margin: 0;
+  padding: 0;
 }
 
 /* Styles for creating a room */

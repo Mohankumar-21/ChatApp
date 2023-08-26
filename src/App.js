@@ -5,7 +5,7 @@ import { Chat } from './components/Chat';
 import Cookies from 'universal-cookie';
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const cookies = new Cookies();
 
@@ -13,13 +13,15 @@ function App() {
   const [isAuth, setIsAuth] = useState(cookies.get('auth-token'));
   const [rooms, setRooms] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState(null);
+  const [messages, setMessages] = useState([]); // Added messages state
   const roomInputRef = useRef(null);
 
   const signUserOut = async () => {
     await signOut(auth);
     cookies.remove('auth-token');
     setIsAuth(false);
-    setSelectedRoom(null); // Clear the selected room when signing out
+    setSelectedRoom(null);
+    setMessages([]); // Clear the messages when signing out
   };
 
   const createRoom = (roomName) => {
@@ -30,7 +32,9 @@ function App() {
   };
 
   const deleteRoom = (roomName) => {
-    const shouldDelete = window.confirm(`Are you sure you want to delete the room "${roomName}"?`);
+    const shouldDelete = window.confirm(
+      `Are you sure you want to delete the room "${roomName}"?`
+    );
     if (shouldDelete) {
       const updatedRooms = rooms.filter((room) => room !== roomName);
       setRooms(updatedRooms);
@@ -42,16 +46,23 @@ function App() {
       <div className="container">
         {isAuth ? (
           selectedRoom ? (
-            <Chat room={selectedRoom} />
+            <Chat
+              room={selectedRoom}
+              setSelectedRoom={setSelectedRoom}
+              setMessages={setMessages} // Pass the setMessages function
+              messages={messages} // Pass the messages state
+            />
           ) : (
             <div>
               <div className="room-list">
                 {rooms.map((roomName) => (
                   <div key={roomName} className="room">
-                    <button onClick={() => setSelectedRoom(roomName)}>Join {roomName}</button>
-                    <div className='delete-room'>
-                    <button onClick={() => deleteRoom(roomName)} >Delete</button>
-                  </div>
+                    <button onClick={() => setSelectedRoom(roomName)}>
+                      Join {roomName}
+                    </button>
+                    <div className="delete-room">
+                      <button onClick={() => deleteRoom(roomName)}>Delete</button>
+                    </div>
                   </div>
                 ))}
               </div>

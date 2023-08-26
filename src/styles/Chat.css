@@ -12,7 +12,7 @@
   font-weight: bold;
   font-size: larger;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  margin-bottom: 2rem; 
+  
   text-align: center;
 }
 
@@ -20,9 +20,10 @@
   border: 1px solid blue;
   background-color: rgb(230, 255, 255);
   padding: 3px 35px 5px 35px;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 5px 10px 5px 10px;
   font-size: 2.5rem;
   color: #0b14bb;
+  
 }
 
 .messages {
@@ -40,7 +41,7 @@
   padding: 1.5rem;
   border: 1px solid #000000;
   border-radius: 0.5rem;
-  background-color: hsl(188, 80%, 76%);
+  background-color: hsl(188, 90%, 80%);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: background-color 0.2s ease;
 }
@@ -86,4 +87,20 @@
 
 .send-button:hover {
   background-color: #ec1212;
+}
+.exit-room-button {
+  padding: 8px 10px;
+  font-size: 0.875rem;
+  background-color: #ec1212;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.exit-room-button:hover {
+  background-color: #b00e0e;
 }
