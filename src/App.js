@@ -5,7 +5,7 @@ import { Chat } from './components/Chat';
 import Cookies from 'universal-cookie';
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 
 const cookies = new Cookies();
 
