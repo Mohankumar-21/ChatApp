@@ -1,89 +1,108 @@
-body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.App {
+.container {
+  border: 2px solid blue;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.app-header {
-  text-align: center;
-  background-color: #3b5998;
-  color: white;
-  width: 100%;
-  padding: 10px 0;
-}
-
-.app-container {
-  margin-top: 50px;
+  height: 97vh;
+  background-color: #b6e9f3;
+  font-family: Arial, sans-serif;
 }
 
 .room {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
 .room label {
-  font-size: 25px;
-  margin-bottom: 20px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-.room input,
-.room button {
-  width: 200px;
-  height: 30px;
-  border: 2px solid #130763;
-  border-radius: 6px;
-  padding: 0 5px;
-  font-size: 20px;
-  text-align: center;
-  margin: 5px;
+.room input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .room button {
-  height: 40px;
-  background-color: #5937ae;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
   color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-/* ... Your existing CSS styles ... */
-
-/* Styles for the sign-out section */
 .sign-out {
-  opacity: 0;
-  margin-top: 0;
-  background-color: rgba(59, 89, 152, 0);
-  transition: opacity 0.3s, margin-top 0.3s, background-color 0.3s;
-  text-align: center;
-  padding: 10px;
-}
-
-.sign-out.active {
-  opacity: 1;
-  margin-top: 20px;
-
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .sign-out button {
-  padding: 8px 16px;
-  font-size: 16px;
+  margin: 10px;
+  padding: 8px 16px ;
+  font-size: 14px;
+  background-color: #dc3545;
+  color: white;
   border: none;
   border-radius: 4px;
-  background-color: #ae052a;
-  color: white;
   cursor: pointer;
 }
 
-/* ... Your existing CSS styles ... */
+/* Background image */
+.container {
+  background-image: url('./img/background.jpg'); /* Adjust the path accordingly */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
+/* Styles for creating a room */
+.create-room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
 
+.create-room input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
 
+.create-room button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #410fca;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styles for deleting a room */
+.delete-room {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.delete-room button {
+  padding: 4px 8px;
+  font-size: 14px;
+  background-color: #e5150e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
