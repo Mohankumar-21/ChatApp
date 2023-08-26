@@ -24,7 +24,7 @@ export const Chat = (props) => {
       setMessages(newmes);
     });
     return () => unsubscribe();
-  }, [room]);
+  }, [room, messagesRef]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
